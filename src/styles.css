@@ -19,6 +19,8 @@
  */
 
 @theme inline {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Cormorant Garamond", serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -59,27 +61,34 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-warm: var(--warm);
+  --color-ink: var(--ink);
+  --color-ivory: var(--ivory);
+  --color-champagne: var(--champagne);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --shadow-float: 0 14px 34px color-mix(in oklab, var(--ink) 24%, transparent);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.125rem;
+  --background: oklch(0.985 0.006 82);
+  --foreground: oklch(0.18 0.01 68);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.19 0.01 65);
+  --primary-foreground: oklch(0.97 0.012 82);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --muted-foreground: oklch(0.47 0.015 65);
+  --accent: oklch(0.68 0.055 75);
+  --accent-foreground: oklch(0.18 0.01 68);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
+  --border: oklch(0.86 0.017 77);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -95,6 +104,12 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --warm: oklch(0.955 0.014 78);
+  --ink: oklch(0.15 0.012 62);
+  --ivory: oklch(0.975 0.012 82);
+  --champagne: oklch(0.78 0.06 76);
+  --whatsapp: oklch(0.67 0.17 149);
+  --whatsapp-foreground: oklch(1 0 0);
 }
 
 .dark {
@@ -140,5 +155,35 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    scroll-behavior: smooth;
   }
+
+  h1, h2, h3, p { letter-spacing: 0; }
+
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+
+@utility section-spacing {
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+@utility bg-hero-overlay {
+  background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 88%, transparent) 0%, color-mix(in oklab, var(--ink) 50%, transparent) 55%, color-mix(in oklab, var(--ink) 12%, transparent) 100%);
+}
+
+@utility bg-final-overlay {
+  background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 92%, transparent) 0%, color-mix(in oklab, var(--ink) 58%, transparent) 60%, color-mix(in oklab, var(--ink) 20%, transparent) 100%);
+}
+
+@utility bg-image-caption {
+  background: linear-gradient(to top, color-mix(in oklab, var(--ink) 80%, transparent), transparent);
+}
+
+@keyframes fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@utility animate-fade-in { animation: fade-in 0.8s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

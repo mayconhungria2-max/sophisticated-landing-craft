@@ -1,0 +1,6 @@
+- [x] Criar identidade editorial premium e responsiva
+- [x] Preparar imagens enviadas sem a interface do Instagram
+- [x] Implementar seções, galeria e visualizador
+- [x] Configurar CTAs de WhatsApp e Instagram
+- [x] Adicionar SEO por página
+- [x] Validar desktop e mobile
