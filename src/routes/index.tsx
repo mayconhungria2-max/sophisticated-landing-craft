@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowDown, ArrowRight, Instagram, Menu, MessageCircle, X } from "lucide-react";
+import { ArrowDown, ArrowRight, CreditCard, Instagram, Mail, MapPin, Menu, MessageCircle, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import eventoLuxo from "@/assets/evento-luxo.webp.asset.json";
@@ -10,11 +10,12 @@ import noivaEditorial from "@/assets/noiva-editorial.webp.asset.json";
 import processoPenteado from "@/assets/processo-penteado.webp.asset.json";
 import sheilaStudio from "@/assets/sheila-studio.webp.asset.json";
 
-const WHATSAPP_NUMBER = "5511999999999"; // Substitua pelo número oficial, somente com dígitos.
+const WHATSAPP_NUMBER = "5571992737788";
 const WHATSAPP_MESSAGE =
   "Olá, Sheila! Vim pelo site e gostaria de consultar disponibilidade para maquiagem e penteado. Gostaria de saber mais sobre o atendimento.";
 const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 const instagramUrl = "https://www.instagram.com/sheilaluzmakeup/";
+const email = "studioluzempreendimentos@gmail.com";
 
 const images = [
   { src: noivaEditorial.url, alt: "Noiva com vestido branco em produção editorial", label: "Noivas" },
@@ -26,10 +27,10 @@ const images = [
 ];
 
 const services = [
-  { number: "01", title: "Noivas", text: "Maquiagem e penteado personalizados para o grande dia.", image: noivaEditorial.url },
-  { number: "02", title: "Eventos", text: "Produções sofisticadas para festas, formaturas, casamentos e ocasiões especiais.", image: eventoLuxo.url },
-  { number: "03", title: "Maquiagem", text: "Beleza profissional com acabamento sofisticado e personalizado.", image: makeupClassico.url },
-  { number: "04", title: "Penteado", text: "Penteados elegantes, modernos e pensados para complementar sua produção.", image: processoPenteado.url },
+  { number: "01", title: "Noivas", text: "Maquiagem personalizada para valorizar sua beleza no grande dia.", image: noivaEditorial.url },
+  { number: "02", title: "Madrinhas", text: "Produção elegante e harmoniosa para celebrar um momento especial.", image: maquiagemFesta.url },
+  { number: "03", title: "Formandas", text: "Maquiagem sofisticada e duradoura para uma noite inesquecível.", image: makeupClassico.url },
+  { number: "04", title: "Carnaval", text: "Beleza criativa, marcante e pensada para acompanhar toda a celebração.", image: eventoLuxo.url },
 ];
 
 const steps = [
@@ -89,12 +90,12 @@ function Index() {
         <div className="mx-auto grid h-20 max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center px-5 md:px-10 lg:grid-cols-[auto_1fr_auto]">
           <a href="#inicio" aria-label="Sheila Luz Makeup — início" className="min-w-0 font-display text-lg tracking-[0.12em] md:text-xl">SHEILA LUZ <span className="font-sans text-[8px] tracking-[0.28em] text-champagne">MAKEUP</span></a>
           <nav className="hidden justify-center gap-8 lg:flex" aria-label="Navegação principal">
-            {[['Início','inicio'],['Sobre','sobre'],['Noivas','noivas'],['Serviços','servicos'],['Portfólio','portfolio'],['Contato','contato']].map(([label,id]) => <a key={id} href={`#${id}`} className="text-[10px] uppercase tracking-[0.16em] text-ivory/70 transition-colors hover:text-ivory">{label}</a>)}
+            {[['Início','inicio'],['Sobre','sobre'],['Noivas','noivas'],['Serviços','servicos'],['Portfólio','portfolio'],['Agendamento','agendamento'],['Contato','contato']].map(([label,id]) => <a key={id} href={`#${id}`} className="text-[10px] uppercase tracking-[0.16em] text-ivory/70 transition-colors hover:text-ivory">{label}</a>)}
           </nav>
           <Button asChild className="hidden h-10 rounded-none border border-champagne bg-transparent px-6 text-[10px] uppercase tracking-[0.18em] text-ivory shadow-none hover:bg-champagne hover:text-ink lg:inline-flex"><a href={whatsappUrl} target="_blank" rel="noreferrer">Agendar</a></Button>
           <Button variant="ghost" size="icon" className="text-ivory hover:bg-ivory/10 hover:text-ivory lg:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}>{menuOpen ? <X /> : <Menu />}</Button>
         </div>
-        {menuOpen && <nav className="border-t border-ivory/10 bg-ink px-6 py-7 lg:hidden" aria-label="Menu móvel">{[['Início','inicio'],['Sobre','sobre'],['Noivas','noivas'],['Serviços','servicos'],['Portfólio','portfolio'],['Contato','contato']].map(([label,id]) => <a key={id} href={`#${id}`} onClick={closeMenu} className="block border-b border-ivory/10 py-4 font-display text-2xl text-ivory">{label}</a>)}</nav>}
+        {menuOpen && <nav className="border-t border-ivory/10 bg-ink px-6 py-7 lg:hidden" aria-label="Menu móvel">{[['Início','inicio'],['Sobre','sobre'],['Noivas','noivas'],['Serviços','servicos'],['Portfólio','portfolio'],['Agendamento','agendamento'],['Contato','contato']].map(([label,id]) => <a key={id} href={`#${id}`} onClick={closeMenu} className="block border-b border-ivory/10 py-4 font-display text-2xl text-ivory">{label}</a>)}</nav>}
       </header>
 
       <section id="inicio" className="relative min-h-[92svh] bg-ink text-ivory">
@@ -115,7 +116,7 @@ function Index() {
       <section id="sobre" className="section-spacing bg-warm">
         <div className="mx-auto grid max-w-[1280px] gap-14 px-5 md:px-10 lg:grid-cols-[0.8fr_1fr] lg:items-center lg:gap-24">
           <div className="relative mx-auto w-full max-w-xl"><img src={sheilaStudio.url} alt="Sheila Luz, maquiadora e hair stylist" loading="lazy" className="aspect-[4/5] w-full object-cover object-top"/><div className="absolute -bottom-5 -right-5 hidden border border-accent bg-warm px-7 py-5 md:block"><p className="font-display text-2xl">Sheila Luz</p><p className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Makeup & Hair Artist</p></div></div>
-          <div><SectionTitle eyebrow="A experiência">Mais do que maquiagem.<br/><em>Uma experiência para você se sentir inesquecível.</em></SectionTitle><div className="mt-8 space-y-5 text-sm leading-7 text-muted-foreground md:text-base"><p>Cada produção é pensada para valorizar a sua beleza, respeitar a sua personalidade e criar um resultado elegante, sofisticado e atemporal.</p><p>Da escolha dos detalhes ao acabamento final, cada etapa é feita para que você se sinta segura, confiante e ainda mais especial no seu grande dia ou evento.</p></div><div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-border pt-7 text-[10px] uppercase tracking-[0.14em] md:grid-cols-4">{["Maquiagem profissional","Penteado","Noivas & eventos","São Paulo + Salvador"].map(item => <span key={item}>{item}</span>)}</div></div>
+           <div><SectionTitle eyebrow="A experiência">Mais do que maquiagem.<br/><em>Uma experiência para você se sentir inesquecível.</em></SectionTitle><div className="mt-8 space-y-5 text-sm leading-7 text-muted-foreground md:text-base"><p>Sou maquiadora há 10 anos. Desde muito nova, sempre gostei de me maquiar. Anos depois, uma amiga me convidou para fazermos juntas um curso de design de sobrancelhas e maquiagem — e foi ali que essa história profissional começou.</p><p>Hoje, cada produção é pensada para valorizar a beleza de cada mulher, respeitar sua personalidade e criar um resultado elegante, sofisticado e atemporal.</p><p>Da escolha dos detalhes ao acabamento final, cada etapa é feita para que você se sinta segura, confiante e ainda mais especial.</p></div><div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-border pt-7 text-[10px] uppercase tracking-[0.14em] md:grid-cols-4">{["10 anos de experiência","Atendimento a domicílio","Noivas & eventos","São Paulo + Salvador"].map(item => <span key={item}>{item}</span>)}</div></div>
         </div>
       </section>
 
@@ -145,14 +146,25 @@ function Index() {
       </section>
 
       <section className="border-b border-border bg-background py-20">
-        <div className="mx-auto grid max-w-[1280px] gap-8 px-5 md:grid-cols-[1fr_auto] md:items-end md:px-10"><div><p className="text-[10px] uppercase tracking-[0.24em] text-accent">Onde atendemos</p><h2 className="mt-4 font-display text-5xl md:text-7xl">São Paulo <em>+</em> Salvador</h2><p className="mt-5 text-sm text-muted-foreground">Atendimentos para noivas e eventos em São Paulo e Salvador.</p></div><CtaLink>Consultar minha data</CtaLink></div>
+        <div className="mx-auto grid max-w-[1280px] gap-8 px-5 md:grid-cols-[1fr_auto] md:items-end md:px-10"><div><p className="text-[10px] uppercase tracking-[0.24em] text-accent">Onde atendemos</p><h2 className="mt-4 font-display text-5xl md:text-7xl">São Paulo <em>+</em> Salvador</h2><p className="mt-5 flex items-center gap-2 text-sm text-muted-foreground"><MapPin className="h-4 w-4 text-accent" /> Atendimento a domicílio em SP e SSA.</p></div><CtaLink>Consultar minha data</CtaLink></div>
+      </section>
+
+      <section id="agendamento" className="section-spacing bg-warm">
+        <div className="mx-auto grid max-w-[1280px] gap-14 px-5 md:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
+          <div><SectionTitle eyebrow="Agendamento">Como reservar a sua data.</SectionTitle><p className="mt-7 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">Entre em contato pelo WhatsApp, conte a data e o tipo de produção desejada. Após a confirmação da disponibilidade, a reserva é feita com 30% do valor total.</p><CtaLink className="mt-8">Solicitar um orçamento</CtaLink></div>
+          <div className="border-y border-border">
+            <details className="group border-b border-border py-7" open><summary className="cursor-pointer list-none font-display text-2xl">Como faço para agendar?</summary><p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">Solicite sua data pelo WhatsApp. Para confirmar a reserva, será necessário o pagamento de 30% do valor total.</p></details>
+            <details className="group border-b border-border py-7"><summary className="cursor-pointer list-none font-display text-2xl">Qual é a política de reserva?</summary><p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">Em caso de desistência da cliente, os 30% pagos para a reserva serão retidos como multa contratual e não serão reembolsados. Se houver um imprevisto por parte da profissional, o valor será reembolsado com aviso de até 24 horas de antecedência.</p></details>
+            <details className="group py-7"><summary className="cursor-pointer list-none font-display text-2xl">Quais são as formas de pagamento?</summary><p className="mt-4 flex items-center gap-2 text-sm leading-7 text-muted-foreground"><CreditCard className="h-4 w-4 text-accent" /> Pix ou cartão. A chave Pix é informada no atendimento.</p></details>
+          </div>
+        </div>
       </section>
 
       <section id="contato" className="relative min-h-[80svh] bg-ink text-ivory">
         <img src={eventoLuxo.url} alt="Produção sofisticada para uma ocasião especial" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top opacity-55"/><div className="absolute inset-0 bg-final-overlay"/><div className="relative mx-auto flex min-h-[80svh] max-w-[1280px] items-center px-5 py-24 md:px-10"><div className="max-w-2xl"><p className="text-[10px] uppercase tracking-[0.28em] text-champagne">Sua data, sua beleza</p><h2 className="mt-5 font-display text-5xl leading-none md:text-8xl">Vamos criar a sua produção <em>perfeita?</em></h2><p className="mt-7 max-w-lg text-sm leading-7 text-ivory/80">Conte um pouco sobre o seu evento e consulte disponibilidade para sua data.</p><CtaLink className="mt-8 bg-champagne text-ink hover:bg-ivory">Solicitar orçamento pelo WhatsApp</CtaLink><p className="mt-4 text-[10px] tracking-[0.1em] text-ivory/60">Respondo sua solicitação e verificamos a disponibilidade da data.</p></div></div>
       </section>
 
-      <footer className="bg-warm px-5 py-16 md:px-10"><div className="mx-auto flex max-w-[1280px] flex-col items-center justify-between gap-10 text-center md:flex-row md:text-left"><div><p className="font-display text-2xl tracking-[0.1em]">SHEILA LUZ</p><p className="mt-1 text-[9px] uppercase tracking-[0.3em] text-muted-foreground">Makeup & Hair Artist</p></div><div><p className="font-display text-2xl">Mais inspirações no Instagram</p><a href={instagramUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs uppercase tracking-[0.15em] text-muted-foreground">@sheilaluzmakeup</a></div><Button asChild variant="outline" className="h-11 rounded-none border-foreground bg-transparent px-5 text-[10px] uppercase tracking-[0.16em]"><a href={instagramUrl} target="_blank" rel="noreferrer"><Instagram /> Seguir no Instagram</a></Button></div><div className="mx-auto mt-12 max-w-[1280px] border-t border-border pt-6 text-center text-[9px] uppercase tracking-[0.16em] text-muted-foreground md:text-left">© {new Date().getFullYear()} Sheila Luz Makeup</div></footer>
+      <footer className="bg-warm px-5 py-16 md:px-10"><div className="mx-auto grid max-w-[1280px] gap-10 text-center md:grid-cols-3 md:text-left"><div><p className="font-display text-2xl tracking-[0.1em]">SHEILA LUZ</p><p className="mt-1 text-[9px] uppercase tracking-[0.3em] text-muted-foreground">Makeup & Hair Artist</p><p className="mt-5 text-xs leading-6 text-muted-foreground">Atendimento a domicílio<br/>São Paulo e Salvador</p></div><div><p className="font-display text-2xl">Fale com Sheila</p><a href={`mailto:${email}`} className="mt-4 inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground"><Mail className="h-4 w-4" /> {email}</a><a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground md:justify-start"><MessageCircle className="h-4 w-4" /> (71) 99273-7788</a></div><div><p className="font-display text-2xl">Mais inspirações no Instagram</p><a href={instagramUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs uppercase tracking-[0.15em] text-muted-foreground">@sheilaluzmakeup</a><Button asChild variant="outline" className="mx-auto mt-5 flex h-11 w-fit rounded-none border-foreground bg-transparent px-5 text-[10px] uppercase tracking-[0.16em] md:mx-0"><a href={instagramUrl} target="_blank" rel="noreferrer"><Instagram /> Seguir no Instagram</a></Button></div></div><div className="mx-auto mt-12 max-w-[1280px] border-t border-border pt-6 text-center text-[9px] uppercase tracking-[0.16em] text-muted-foreground md:text-left">© {new Date().getFullYear()} Sheila Luz Makeup</div></footer>
 
       <Button asChild size="icon" className="fixed bottom-5 right-5 z-30 h-14 w-14 rounded-full bg-whatsapp text-whatsapp-foreground shadow-float hover:bg-whatsapp/90" aria-label="Falar com Sheila pelo WhatsApp"><a href={whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle className="h-6 w-6" /></a></Button>
 
