@@ -4,6 +4,6 @@
 - [x] Configurar CTAs de WhatsApp e Instagram
 - [x] Adicionar SEO por página
 - [x] Validar desktop e mobile
-- [ ] Atualizar história, serviços e cidades atendidas
-- [ ] Adicionar regras de agendamento, pagamentos e contato
-- [ ] Validar os novos conteúdos no desktop e mobile
+- [x] Atualizar história, serviços e cidades atendidas
+- [x] Adicionar regras de agendamento, pagamentos e contato
+- [x] Validar os novos conteúdos no desktop e mobile
